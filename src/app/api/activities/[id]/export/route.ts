@@ -1,4 +1,3 @@
-import { NextResponse } from "next/server";
 import mockData from "./mockData";
 import { generateGPX } from "@journal/util/gpx/generateGPX";
 
@@ -21,13 +20,9 @@ export async function GET(request: Request, context: { params: Params }) {
   // @TODO: replace gpx with enum from ParamsType
   const { type = "gpx" } = context.params || {};
 
-  console.log(mockData);
-  console.log(type);
-
   const formattedData = formatStravaActivityStream(mockData);
+  // @TODO: factory driven by type e.g. GPX|TCX
   const gpx = generateGPX(formattedData);
-
-  console.log(gpx);
 
   const response = new Response(gpx);
   response.headers.set('Content-type', 'application/xml')
