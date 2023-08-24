@@ -1,3 +1,4 @@
+import { ExportToGPXButton } from "@journal/feature/journal/ExportToGPXButton";
 import { Journal } from "@journal/feature/journal/Journal";
 
 const getActivities = async () => {
@@ -17,6 +18,8 @@ const JournalPage: React.FC = async () => {
         <h1 className="text-center text-5xl font-extrabold tracking-tight text-white sm:text-[5rem]">
           Strava Journal
         </h1>
+
+        <ExportToGPXButton />
 
         <Journal activities={activities} />
       </main>
